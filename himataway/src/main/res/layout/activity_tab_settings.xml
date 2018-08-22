@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:baselineAligned="false"
+              android:orientation="vertical">
+
+    <Switch
+        android:id="@+id/mode_switch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right"
+        android:textOn="@string/mode_remove"
+        android:textOff="@string/mode_sort"
+        android:layout_margin="8dp"/>
+
+    <ListView
+        android:id="@+id/list"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="?attr/holo_background">
+    </ListView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/holo_background">
+
+        <TextView
+            android:id="@+id/button_cancel"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:padding="14dp"
+            android:gravity="center"
+            android:background="?attr/button_stateful"
+            android:textSize="14sp"
+            android:text="@string/button_cancel"/>
+
+        <TextView
+            android:id="@+id/button_save"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginLeft="1dp"
+            android:padding="14dp"
+            android:gravity="center"
+            android:background="?attr/button_stateful"
+            android:textSize="14sp"
+            android:text="@string/button_save"/>
+    </LinearLayout>
+</LinearLayout>
+

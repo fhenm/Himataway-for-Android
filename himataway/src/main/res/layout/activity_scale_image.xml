@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <FrameLayout
+        android:orientation="vertical" android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.github.fhenm.himataway.widget.ScaleImageViewPager
+            android:id="@+id/pager"
+            android:visibility="invisible"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+
+        <!--Activity Transition 用の画像表示 -->
+        <ImageView
+            android:id="@+id/transitionImage"
+            android:visibility="visible"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <com.viewpagerindicator.CirclePageIndicator
+            android:id="@+id/symbol"
+            android:layout_width="128dp"
+            android:layout_gravity="bottom|center"
+            android:layout_height="wrap_content"
+            android:padding="10dp"/>
+
+    </FrameLayout>
+</layout>

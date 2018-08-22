@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- TODO 全て RecyleView 化したら消す-->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="?android:attr/listPreferredItemHeight"
+              android:foreground="?android:attr/selectableItemBackground"
+              android:background="?android:attr/selectableItemBackground"
+              android:baselineAligned="false"
+              android:orientation="horizontal"
+              android:padding="8dp">
+
+    <TextView
+        android:id="@+id/word"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:layout_gravity="center"
+        android:textSize="18sp"/>
+
+    <com.github.fhenm.himataway.widget.FontelloTextView
+        android:id="@+id/trash"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="@string/fontello_trash"
+        android:textColor="#666666"
+        android:textSize="28sp"/>
+</LinearLayout>

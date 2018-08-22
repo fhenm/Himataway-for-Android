@@ -1,0 +1,81 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <string name="title_activity_settings">Settings</string>
+
+    <string name="pref_title_display_account_name">Account name of the toolbar</string>
+    <string-array name="pref_display_account_name_titles">
+        <item>Username (@xxx)</item>
+        <item>Profile Name</item>
+        <item>None</item>
+    </string-array>
+    <string-array name="pref_display_account_name_values">
+        <item>screen_name</item>
+        <item>display_name</item>
+        <item>none</item>
+    </string-array>
+
+    <string name="pref_title_keep_screen_on">Keep screen</string>
+    <string name="pref_title_fast_scroll_on">Fast scroll</string>
+    <string name="pref_description_fast_scroll_on">Display scroll thumb</string>
+
+    <string name="pref_title_font_size">Font size</string>
+    <string-array name="pref_font_size_titles">
+        <item>10 pt</item>
+        <item>11 pt</item>
+        <item>12 pt</item>
+        <item>13 pt</item>
+        <item>14 pt</item>
+        <item>15 pt</item>
+        <item>16 pt</item>
+        <item>17 pt</item>
+        <item>18 pt</item>
+        <item>19 pt</item>
+        <item>20 pt</item>
+    </string-array>
+    <string-array name="pref_font_size_values">
+        <item>10</item>
+        <item>11</item>
+        <item>12</item>
+        <item>13</item>
+        <item>14</item>
+        <item>15</item>
+        <item>16</item>
+        <item>17</item>
+        <item>18</item>
+        <item>19</item>
+        <item>20</item>
+    </string-array>
+
+    <string name="pref_title_notification">Notification Settings</string>
+
+    <string name="pref_title_mute">Mute Settings</string>
+
+    <string name="pref_title_performance">Performance Settings</string>
+
+    <string name="pref_title_log_tap">Long tap menu</string>
+    <string-array name="pref_long_tap_titles">
+        <item>Quote</item>
+        <item>View conversation</item>
+        <item>View tweets around</item>
+        <item>Share</item>
+        <item>Reply to all</item>
+        <item>Nothing</item>
+    </string-array>
+    <string-array name="pref_log_tap_values">
+        <item>quote</item>
+        <item>talk</item>
+        <item>show_around</item>
+        <item>share_url</item>
+        <item>reply_all</item>
+        <item>nothing</item>
+    </string-array>
+
+    <string name="pref_title_theme">Theme Color</string>
+    <string-array name="pref_theme_titles">
+        <item>black</item>
+        <item>white</item>
+    </string-array>
+    <string-array name="pref_theme_values">
+        <item>black</item>
+        <item>white</item>
+    </string-array>
+</resources>

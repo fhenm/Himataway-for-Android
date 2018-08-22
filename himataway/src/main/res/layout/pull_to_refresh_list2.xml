@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/ptr_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:id="@+id/container"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/recycler_view"
+                android:visibility="visible"
+                android:layout_height="0dp"
+                android:layout_width="match_parent"
+                android:layout_weight="1"
+                android:scrollbars="vertical"
+                app:layoutManager="android.support.v7.widget.LinearLayoutManager"
+                app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
+
+            <ProgressBar
+                android:id="@+id/guruguru"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:visibility="gone"
+                android:visibility="gone"
+                android:gravity="center"/>
+        </LinearLayout>
+    </android.support.v4.widget.SwipeRefreshLayout>
+</layout>

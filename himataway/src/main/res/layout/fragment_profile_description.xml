@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:paddingLeft="12dp"
+              android:paddingRight="12dp"
+              android:gravity="center"
+              android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/description"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:layout_marginBottom="4dp"
+        android:shadowColor="@android:color/black"
+        android:shadowDx="5.0"
+        android:shadowDy="5.0"
+        android:shadowRadius="10.0"
+        android:textColor="@android:color/white"
+        android:textSize="12sp"
+        tools:text="ジャスタウェイ職人"
+        android:autoLink="web"/>
+
+    <TextView
+        android:id="@+id/location"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginBottom="4dp"
+        android:shadowColor="@android:color/black"
+        android:shadowDx="5.0"
+        android:shadowDy="5.0"
+        android:shadowRadius="10.0"
+        android:textColor="@android:color/white"
+        tools:text="江戸"
+        android:textSize="12sp"
+        android:autoLink="web"/>
+
+    <TextView
+        android:id="@+id/url"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginBottom="4dp"
+        android:shadowColor="@android:color/black"
+        android:shadowDx="5.0"
+        android:shadowDy="5.0"
+        android:shadowRadius="10.0"
+        android:textColor="@android:color/white"
+        android:textSize="12sp"
+        tools:text="http://himataway.info"
+        android:autoLink="web"/>
+
+    <TextView
+        android:id="@+id/start"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:shadowColor="@android:color/black"
+        android:shadowDx="5.0"
+        android:shadowDy="5.0"
+        android:shadowRadius="10.0"
+        android:textColor="@android:color/white"
+        tools:text="Twitter開始日：2009年08月31日"
+        android:textSize="12sp"/>
+</LinearLayout>
