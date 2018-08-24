@@ -73,12 +73,12 @@ class RecyclerUserAdapter(
     override var onItemClickListener: (User) -> Unit = {}
     override var onItemLongClickListener: (User) -> Boolean = { false }
 
-    override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): RecyclerView.ViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         val view = RecyclerUserView(context)
         return RecyclerUserViewHolder(view)
     }
 
-    override fun onBindViewHolder(holder: RecyclerView.ViewHolder?, position: Int) {
+    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         if(holder is RecyclerUserViewHolder){
             holder.update(users[position])
         }

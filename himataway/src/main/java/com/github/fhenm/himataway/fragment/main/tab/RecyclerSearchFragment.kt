@@ -14,10 +14,10 @@ import twitter4j.Status
 class RecyclerSearchFragment : ListBasedFragment<Row, String, Status, Query, SearchFragmentViewModel>() {
 
     override val id: String
-        get() = arguments.getString("searchWord")
+        get() = arguments!!.getString("searchWord")
 
     override fun createAdapter(): DataItemAdapter<Row> =
-            RecyclerTweetAdapter(activity, ArrayList()).applyTapEvents(activity)
+            RecyclerTweetAdapter(activity!!, ArrayList()).applyTapEvents(activity!!)
 
     override fun convertDataToViewItem(dataItem: Status): Row = Row.newStatus(dataItem)
 

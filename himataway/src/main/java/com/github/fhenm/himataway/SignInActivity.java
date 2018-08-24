@@ -153,16 +153,16 @@ public class SignInActivity extends Activity {
     void startOAuth() {
         MessageUtil.showProgressDialog(this, getString(R.string.progress_process));
         AsyncTask<Void, Void, RequestToken> task = new AsyncTask<Void, Void, RequestToken>() {
-            @Override
-            protected RequestToken doInBackground(Void... params) {
-                Twitter twitter = TwitterManager.getTwitterInstance();
-                try {
-                    String string = getString(R.string.twitter_callback_url);
-                    return twitter.getOAuthRequestToken(string);
-                } catch (TwitterException e) {
-                    e.printStackTrace();
-                    return null;
-                }
+                    @Override
+                    protected RequestToken doInBackground(Void... params) {
+                        Twitter twitter = TwitterManager.getTwitterInstance();
+                        try {
+                            String string = getString(R.string.twitter_callback_url);
+                            return twitter.getOAuthRequestToken(string);
+                        } catch (TwitterException e) {
+                            e.printStackTrace();
+                            return null;
+                        }
             }
 
             @Override

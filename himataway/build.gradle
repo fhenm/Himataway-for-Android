@@ -18,28 +18,26 @@ def getFromLocalProperties(file, key) {
 
 
 android {
-    compileSdkVersion 26
-
+    compileSdkVersion 27
     defaultConfig {
         minSdkVersion 16
-        targetSdkVersion 26
+        targetSdkVersion 27
 
         versionCode 101
-        versionName '0.5.1'
+        versionName '0.0.1'
         applicationId "com.github.fhenm.himataway"
         vectorDrawables.useSupportLibrary = true
         multiDexEnabled true
     }
-
     buildTypes {
         debug {
             applicationIdSuffix ".debug"
 
             // Twitter のキー:デバッグ時は local.properties から注入する
-            buildConfigField "String", "TwitterConsumerKey", "\""+getFromLocalProperties('local.properties', 'twitter.consumer_key')+"\""
-            buildConfigField "String", "TwitterConsumerSecret", "\""+getFromLocalProperties('local.properties', 'twitter.consumer_secret')+"\""
+            buildConfigField "String", "TwitterConsumerKey", "\"" + getFromLocalProperties('local.properties', 'twitter.consumer_key') + "\""
+            buildConfigField "String", "TwitterConsumerSecret", "\"" + getFromLocalProperties('local.properties', 'twitter.consumer_secret') + "\""
             // App Center
-            buildConfigField "String", "AppCenterAppSecret", "\""+getFromLocalProperties('local.properties', 'appcenter.appsecret')+"\""
+            buildConfigField "String", "AppCenterAppSecret", "\"" + getFromLocalProperties('local.properties', 'appcenter.appsecret') + "\""
 
         }
 
@@ -52,47 +50,45 @@ android {
             //buildConfigField("String", "AppCenterAppSecret", "\""+"${System.env.APPCENTER_APP_SECRET}"+"\"")
 
             // Twitter のキー:リリースでもlocal.properties から注入するようにした
-            buildConfigField "String", "TwitterConsumerKey", "\""+getFromLocalProperties('local.properties', 'twitter.consumer_key')+"\""
-            buildConfigField "String", "TwitterConsumerSecret", "\""+getFromLocalProperties('local.properties', 'twitter.consumer_secret')+"\""
+            buildConfigField "String", "TwitterConsumerKey", "\"" + getFromLocalProperties('local.properties', 'twitter.consumer_key') + "\""
+            buildConfigField "String", "TwitterConsumerSecret", "\"" + getFromLocalProperties('local.properties', 'twitter.consumer_secret') + "\""
             // App Center
-            buildConfigField "String", "AppCenterAppSecret", "\""+getFromLocalProperties('local.properties', 'appcenter.appsecret')+"\""
+            buildConfigField "String", "AppCenterAppSecret", "\"" + getFromLocalProperties('local.properties', 'appcenter.appsecret') + "\""
 
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
-
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
-
     dataBinding {
         enabled = true
     }
+    buildToolsVersion '28.0.2'
 }
 
 dependencies {
-    kapt 'com.android.databinding:compiler:3.1.0'
+    kapt 'com.android.databinding:compiler:3.1.4'
 
     // https://stackoverflow.com/a/46974168/3309589
-    compile ('org.eclipse.paho:org.eclipse.paho.android.service:1.0.2')
-            { exclude module: 'support-v4' }
-
-    compile fileTree(include: '*.jar', dir: 'libs')
+    implementation('org.eclipse.paho:org.eclipse.paho.android.service:1.0.2') { exclude module: 'support-v4' }
+    implementation fileTree(include: '*.jar', dir: 'libs')
 
     // Kotlin
-    compile "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 
     // Kotlin Coroutines
+
     // see - https://github.com/Kotlin/kotlinx.coroutines for latest version
     def coroutines_version = '0.20'
-    compile "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutines_version"
-    compile "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutines_version"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutines_version"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutines_version"
 
     // App Center
-    compile "com.microsoft.appcenter:appcenter-analytics:${appCenterSdkVersion}"
-    compile "com.microsoft.appcenter:appcenter-crashes:${appCenterSdkVersion}"
+    implementation "com.microsoft.appcenter:appcenter-analytics:${appCenterSdkVersion}"
+    implementation "com.microsoft.appcenter:appcenter-crashes:${appCenterSdkVersion}"
 
     // Android Architecture Components
     implementation "android.arch.lifecycle:runtime:${arch_runtime_version}"
@@ -101,31 +97,32 @@ dependencies {
     kapt "android.arch.lifecycle:compiler:${arch_version}"
 
     // Butter Knife
-    compile "com.jakewharton:butterknife:${butterKnifeVersion}"
+    implementation "com.jakewharton:butterknife:${butterKnifeVersion}"
     kapt "com.jakewharton:butterknife-compiler:${butterKnifeVersion}"
 
     // Support Libraries
-    compile "com.android.support:appcompat-v7:${supportLibVersion}"
-    compile "com.android.support:design:${supportLibVersion}"
-    compile "com.android.support:recyclerview-v7:${supportLibVersion}"
-    compile "com.android.support.constraint:constraint-layout:1.0.2"
+    implementation "com.android.support:appcompat-v7:${supportLibVersion}"
+    implementation "com.android.support:design:${supportLibVersion}"
+    implementation "com.android.support:recyclerview-v7:${supportLibVersion}"
+    implementation 'com.android.support.constraint:constraint-layout:1.1.2'
 
     // Twitter4J
-    compile "org.twitter4j:twitter4j-core:${twitter4jVersion}"
-    compile "org.twitter4j:twitter4j-async:${twitter4jVersion}"
-    compile "org.twitter4j:twitter4j-media-support:${twitter4jVersion}"
-    compile "org.twitter4j:twitter4j-stream:${twitter4jVersion}"
+    implementation "org.twitter4j:twitter4j-core:${twitter4jVersion}"
+    implementation "org.twitter4j:twitter4j-async:${twitter4jVersion}"
+    implementation "org.twitter4j:twitter4j-media-support:${twitter4jVersion}"
+    implementation "org.twitter4j:twitter4j-stream:${twitter4jVersion}"
 
     // Rx, RxProperty
-    implementation 'io.reactivex.rxjava2:rxjava:2.0.7'
+    implementation 'io.reactivex.rxjava2:rxjava:2.1.0'
     implementation 'com.github.k-kagurazaka.rx-property-android:rx-property:4.0.0'
     implementation 'com.github.k-kagurazaka.rx-property-android:rx-property-kotlin:4.0.0'
     implementation 'io.reactivex.rxjava2:rxkotlin:2.1.0'
     implementation 'com.jakewharton.rxrelay2:rxrelay:2.0.0'
 
-    compile 'com.google.code.gson:gson:2.4'
-    compile 'com.google.guava:guava:19.0'
-    compile 'de.greenrobot:eventbus:2.2.0'
-    compile 'com.nostra13.universalimageloader:universal-image-loader:1.9.1'
-    compile 'com.github.chrisbanes.actionbarpulltorefresh:library:0.9.9'
+    implementation 'com.google.code.gson:gson:2.8.0'
+    implementation 'com.google.guava:guava:22.0'
+    implementation 'de.greenrobot:eventbus:2.2.0'
+    implementation 'com.nostra13.universalimageloader:universal-image-loader:1.9.1'
+    implementation 'com.github.chrisbanes.actionbarpulltorefresh:library:0.9.9'
+    implementation 'com.squareup.picasso:picasso:2.71828'
 }

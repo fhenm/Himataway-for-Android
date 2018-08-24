@@ -30,7 +30,7 @@ class SearchFragment : BaseFragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         if (mSearchWord == null) {
-            mSearchWord = arguments.getString("searchWord")
+            mSearchWord = arguments!!.getString("searchWord")
         }
         super.onActivityCreated(savedInstanceState)
     }

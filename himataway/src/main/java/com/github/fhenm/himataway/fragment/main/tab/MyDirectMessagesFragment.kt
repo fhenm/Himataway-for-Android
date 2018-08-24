@@ -16,7 +16,7 @@ class MyDirectMessagesFragment : ListBasedFragment<Row, Unit, DirectMessage, Lon
         get() = Unit
 
     override fun createAdapter(): DataItemAdapter<Row> =
-            RecyclerTweetAdapter(activity, ArrayList()).applyTapEvents(activity)
+            RecyclerTweetAdapter(activity!!, ArrayList()).applyTapEvents(activity!!)
 
     override fun convertDataToViewItem(dataItem: DirectMessage): Row = Row.newDirectMessage(dataItem)
 

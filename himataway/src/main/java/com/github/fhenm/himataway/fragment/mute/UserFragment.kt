@@ -13,14 +13,14 @@ import java.util.*
 
 class UserFragment : Fragment() {
 
-    override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         if (inflater == null) {
             return null
         }
 
         val binding = RecyclerListBinding.inflate(inflater, container, false)
 
-        val adapter = RecyclerMuteUserAdapter(activity, ArrayList())
+        val adapter = RecyclerMuteUserAdapter(activity!!, ArrayList())
         binding.recyclerView.adapter = adapter
 
         val userMap = MuteSettings.getUserMap()

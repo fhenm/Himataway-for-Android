@@ -67,12 +67,12 @@ class RecyclerMuteUserAdapter(
     /** 削除した時のハンドラ */
     var onItemRemoveListener : (MuteUser)->Unit = {}
 
-    override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): RecyclerView.ViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         val view = RecyclerMuteUserView(context).also { v -> v.onItemRemoveListener = onItemRemoveListener }
         return RecyclerMuteUserViewHolder(view)
     }
 
-    override fun onBindViewHolder(holder: RecyclerView.ViewHolder?, position: Int) {
+    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         if(holder is RecyclerMuteUserViewHolder){
             holder.update(users[position])
         }

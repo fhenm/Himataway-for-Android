@@ -54,7 +54,7 @@ abstract class ListBasedFragment<
 
     private lateinit var viewModel: TViewModel
 
-    override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val bin = inflater?.let { inf -> PullToRefreshList2Binding.inflate(inf, container, false) }
         if (bin == null) {
             return null

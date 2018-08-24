@@ -39,10 +39,10 @@ class RetweetersFragment : DialogFragment() {
                 R.layout.fragment_recycler_retweeters, null, false)
         dialog.setContentView(binding.getRoot())
 
-        adapter = RecyclerUserAdapter(activity, ArrayList())
+        adapter = RecyclerUserAdapter(activity!!, ArrayList())
         binding.recyclerView.adapter = adapter
 
-        val statusId = arguments.getLong("statusId")
+        val statusId = arguments!!.getLong("statusId")
 
         val viewModel = ViewModelProviders
                 .of(this, RetweetersFragmentViewModel.Factory(

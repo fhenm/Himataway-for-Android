@@ -13,10 +13,10 @@ import twitter4j.Status
 class RecyclerUserListFragment : ListBasedFragment<Row, Long, Status, Long, UserListFragmentViewModel>() {
 
     override val id: Long
-        get() = arguments.getLong("userListId")
+        get() = arguments!!.getLong("userListId")
 
     override fun createAdapter(): DataItemAdapter<Row> =
-            RecyclerTweetAdapter(activity, ArrayList()).applyTapEvents(activity)
+            RecyclerTweetAdapter(activity!!, ArrayList()).applyTapEvents(activity!!)
 
     override fun convertDataToViewItem(dataItem: Status): Row = Row.newStatus(dataItem)
 

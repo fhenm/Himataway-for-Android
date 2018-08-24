@@ -15,5 +15,5 @@ abstract class TweetListBasedFragment<TViewModel: ListBasedFragmentViewModel<Uni
     override fun convertDataToViewItem(dataItem: Status): Row = Row.newStatus(dataItem)
 
     override fun createAdapter(): DataItemAdapter<Row> =
-            RecyclerTweetAdapter(activity, ArrayList()).applyTapEvents(activity)
+            RecyclerTweetAdapter(activity!!, ArrayList()).applyTapEvents(activity!!)
 }

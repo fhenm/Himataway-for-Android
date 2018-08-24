@@ -154,7 +154,7 @@ abstract class BaseFragment : Fragment(), SupportListInterface {
         retainInstance = true
     }
 
-    override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val bin = PullToRefreshList2Binding.inflate(inflater!!, container, false) ?: return null
 
         this.mListView = bin.recyclerView
@@ -166,7 +166,7 @@ abstract class BaseFragment : Fragment(), SupportListInterface {
 
         mAdapter.onItemClickListener = { row ->
             StatusMenuFragment.newInstance(row)
-                    .show(this.activity.supportFragmentManager, "dialog")
+                    .show(this.activity!!.supportFragmentManager, "dialog")
         }
 
         mAdapter.onItemLongClickListener = { row ->
@@ -190,7 +190,7 @@ abstract class BaseFragment : Fragment(), SupportListInterface {
     }
 
     private fun createAdapter(): RecyclerTweetAdapter {
-        return RecyclerTweetAdapter(activity, arrayListOf())
+        return RecyclerTweetAdapter(activity!!, arrayListOf())
     }
 
 //    override fun onActivityCreated(savedInstanceState: Bundle?) {
@@ -262,7 +262,7 @@ abstract class BaseFragment : Fragment(), SupportListInterface {
 
     override fun goToTop(): Boolean {
         if (mListView == null) {
-            activity.finish()
+            activity!!.finish()
             return false
         }
         mListView.setSelection(0)

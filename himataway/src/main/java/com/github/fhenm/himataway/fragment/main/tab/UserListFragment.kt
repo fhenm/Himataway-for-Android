@@ -26,7 +26,7 @@ class UserListFragment : BaseFragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         if (mUserListId == 0L) {
-            mUserListId = arguments.getLong("userListId")
+            mUserListId = arguments!!.getLong("userListId")
         }
         super.onActivityCreated(savedInstanceState)
     }

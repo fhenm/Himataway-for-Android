@@ -13,7 +13,7 @@ import twitter4j.User
  */
 class FollowersListFragment : ListBasedFragment<User, Long, User, Long, FollowersListFragmentViewModel>() {
     override val id: Long
-        get() = (arguments.getSerializable("user") as User).id
+        get() = (arguments!!.getSerializable("user") as User).id
 
     override fun createViewModel(userId: Long): FollowersListFragmentViewModel =
         ViewModelProviders
@@ -24,7 +24,7 @@ class FollowersListFragment : ListBasedFragment<User, Long, User, Long, Follower
                 .get(FollowersListFragmentViewModel::class.java)
 
     override fun createAdapter(): DataItemAdapter<User> =
-            RecyclerUserAdapter(activity, ArrayList())
+            RecyclerUserAdapter(activity!!, ArrayList())
 
     override fun convertDataToViewItem(dataItem: User): User = dataItem
 }

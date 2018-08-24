@@ -15,11 +15,7 @@ import com.github.fhenm.himataway.event.connection.StreamingConnectionEvent;
 import com.github.fhenm.himataway.settings.BasicSettings;
 import com.github.fhenm.himataway.util.MessageUtil;
 
-import twitter4j.ConnectionLifeCycleListener;
-import twitter4j.Twitter;
-import twitter4j.TwitterFactory;
-import twitter4j.TwitterStream;
-import twitter4j.TwitterStreamFactory;
+import twitter4j.*;
 import twitter4j.auth.AccessToken;
 import twitter4j.conf.ConfigurationBuilder;
 
@@ -57,7 +53,23 @@ public class TwitterManager {
                         public void run() {
                             MessageUtil.showToast(R.string.toast_create_streaming);
                             sUserStreamAdapter.start();
-                            sTwitterStream.user();
+                            new AsyncTask<Void, Void, IDs>() {
+                                @Override
+                                protected IDs doInBackground(Void... voids) {
+                                    try {
+                                        return getTwitter().getFriendsIDs(-1L);
+                                    } catch (TwitterException e) {
+                                        e.printStackTrace();
+                                        return null;
+                                    }
+                                }
+
+                                @Override
+                                protected void onPostExecute(IDs iDs) {
+                                    FilterQuery filterquery = new FilterQuery(iDs.getIDs());
+                                    sTwitterStream.filter(filterquery);
+                                }
+                            }.execute();
                         }
                     }, 5000);
                 }
@@ -121,7 +133,23 @@ public class TwitterManager {
             if (!sTwitterStreamConnected) {
                 sUserStreamAdapter.start();
                 sTwitterStream.setOAuthAccessToken(AccessTokenManager.getAccessToken());
-                sTwitterStream.user();
+                new AsyncTask<Void, Void, IDs>() {
+                    @Override
+                    protected IDs doInBackground(Void... voids) {
+                        try {
+                            return getTwitter().getFriendsIDs(-1L);
+                        } catch (TwitterException e) {
+                            e.printStackTrace();
+                            return null;
+                        }
+                    }
+
+                    @Override
+                    protected void onPostExecute(IDs iDs) {
+                        FilterQuery filterquery = new FilterQuery(iDs.getIDs());
+                        sTwitterStream.filter(filterquery);
+                    }
+                }.execute();
             }
             return;
         }
@@ -129,7 +157,23 @@ public class TwitterManager {
 //        sUserStreamAdapter = new MyUserStreamAdapter();
         sTwitterStream.addListener(sUserStreamAdapter);
         sTwitterStream.addConnectionLifeCycleListener(new MyConnectionLifeCycleListener());
-        sTwitterStream.user();
+        new AsyncTask<Void, Void, IDs>() {
+            @Override
+            protected IDs doInBackground(Void... voids) {
+                try {
+                    return getTwitter().getFriendsIDs(-1L);
+                } catch (TwitterException e) {
+                    e.printStackTrace();
+                    return null;
+                }
+            }
+
+            @Override
+            protected void onPostExecute(IDs iDs) {
+                FilterQuery filterquery = new FilterQuery(iDs.getIDs());
+                sTwitterStream.filter(filterquery);
+            }
+        }.execute();
         BasicSettings.resetNotification();
     }
 

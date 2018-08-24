@@ -80,10 +80,9 @@ class ScaleImageActivity : AppCompatActivity() {
             args.putString("url", imageURL)
             adapter.addTab(ScaleImageFragment::class.java, args)
         }
-
         // Activity Transition 用の TransitionName を設定
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            ImageUtil.displayImage(imageUrls[index], binding.transitionImage)
+            //ImageUtil.displayImage(imageUrls[index], binding.transitionImage) //ここいらないよ？
             binding.transitionImage.transitionName = getString(R.string.transition_tweet_image)
         }
 
@@ -92,6 +91,7 @@ class ScaleImageActivity : AppCompatActivity() {
     }
 
     companion object {
+
         /** 画像表示用の StartActivity  */
         fun startActivityWithImage(
                 activity: Activity,
@@ -103,7 +103,7 @@ class ScaleImageActivity : AppCompatActivity() {
             intent.putExtra("status", status)
             intent.putExtra("index", openIndex)
 
-            val options : ActivityOptions? = if (sharedView != null && transitionName != null) {
+            val options: ActivityOptions? = if (sharedView != null && transitionName != null) {
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
                     ActivityOptions.makeSceneTransitionAnimation(activity,
                             sharedView, transitionName)
@@ -113,7 +113,6 @@ class ScaleImageActivity : AppCompatActivity() {
             } else {
                 null
             }
-
             if (options != null) {
                 activity.startActivity(intent, options.toBundle())
             } else {
@@ -122,3 +121,4 @@ class ScaleImageActivity : AppCompatActivity() {
         }
     }
 }
+

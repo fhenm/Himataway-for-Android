@@ -24,7 +24,7 @@ import twitter4j.User
  */
 class UserTimelineFragment : ListBasedFragment<Row, Long, Status, Long, UserTimelineFragmentViewModel>() {
     override val id: Long
-        get() = (arguments.getSerializable("user") as User).id
+        get() = (arguments!!.getSerializable("user") as User).id
 
     override fun createViewModel(userId: Long): UserTimelineFragmentViewModel =
             ViewModelProviders
@@ -35,16 +35,16 @@ class UserTimelineFragment : ListBasedFragment<Row, Long, Status, Long, UserTime
                     .get(UserTimelineFragmentViewModel::class.java)
 
     override fun createAdapter(): DataItemAdapter<Row> =
-            RecyclerTweetAdapter(activity, ArrayList())
+            RecyclerTweetAdapter(activity!!, ArrayList())
 
     override fun convertDataToViewItem(dataItem: Status): Row = Row.newStatus(dataItem)
 
-    override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val v = super.onCreateView(inflater, container, savedInstanceState)
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        val v = super.onCreateView(inflater!!, container, savedInstanceState)
 
         adapter.onItemClickListener = { row ->
             StatusMenuFragment.newInstance(row)
-                    .show(activity.getSupportFragmentManager(), "dialog")
+                    .show(activity!!.getSupportFragmentManager(), "dialog")
         }
 
         adapter.onItemLongClickListener = { row ->

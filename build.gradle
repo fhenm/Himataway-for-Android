@@ -1,7 +1,7 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 
 buildscript {
-    ext.kotlin_version = '1.2.10'
+    ext.kotlin_version = '1.2.61'
 
     repositories {
         google()
@@ -10,7 +10,7 @@ buildscript {
     }
     dependencies {
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
-        classpath 'com.android.tools.build:gradle:3.1.0'
+        classpath 'com.android.tools.build:gradle:3.1.4'
     }
 }
 
@@ -27,9 +27,9 @@ allprojects {
 
 project.ext {
     appCenterSdkVersion = "1.1.0"
-    supportLibVersion = "26.1.0"
-    arch_runtime_version = "1.0.3"
-    arch_version = "1.0.0"
+    supportLibVersion = "27.1.0"
+    arch_runtime_version = "1.1.1"
+    arch_version = "1.1.1"
     twitter4jVersion = "4.0.6"
     butterKnifeVersion = "8.5.1"
 }

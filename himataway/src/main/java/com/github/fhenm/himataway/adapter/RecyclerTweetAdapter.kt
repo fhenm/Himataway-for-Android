@@ -373,7 +373,7 @@ class RecyclerTweetView constructor(
 
     class RetweetDialogFragment: DialogFragment() {
         override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
-            val status = arguments.getSerializable("status") as Status? ?: return super.onCreateDialog(savedInstanceState)
+            val status = arguments!!.getSerializable("status") as Status? ?: return super.onCreateDialog(savedInstanceState)
             val builder = AlertDialog.Builder(activity)
             builder.setTitle(R.string.confirm_retweet)
             builder.setMessage(status!!.text)
@@ -403,7 +403,7 @@ class RecyclerTweetView constructor(
 
     class DestroyRetweetDialogFragment: DialogFragment() {
         override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
-            val status = arguments.getSerializable("status") as Status? ?: return super.onCreateDialog(savedInstanceState)
+            val status = arguments!!.getSerializable("status") as Status? ?: return super.onCreateDialog(savedInstanceState)
             val builder = AlertDialog.Builder(activity)
             builder.setTitle(R.string.confirm_destroy_retweet)
             builder.setMessage(status!!.text)
@@ -456,7 +456,7 @@ class RecyclerTweetAdapter(
     override var onItemClickListener: (Row) -> Unit = {}
     override var onItemLongClickListener: (Row) -> Boolean = { false }
 
-    override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): RecyclerView.ViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         val view = RecyclerTweetView(context)
         return RecyclerTweetViewHolder(view).also { holder ->
             holder.onItemClickListener = { pos -> onItemClickListener(rows[pos]) }
@@ -464,7 +464,7 @@ class RecyclerTweetAdapter(
         }
     }
 
-    override fun onBindViewHolder(holder: RecyclerView.ViewHolder?, position: Int) {
+    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         if(holder is RecyclerTweetViewHolder){
             holder.update(rows[position])
         }
