@@ -91,7 +91,6 @@ class ScaleImageActivity : AppCompatActivity() {
     }
 
     companion object {
-
         /** 画像表示用の StartActivity  */
         fun startActivityWithImage(
                 activity: Activity,

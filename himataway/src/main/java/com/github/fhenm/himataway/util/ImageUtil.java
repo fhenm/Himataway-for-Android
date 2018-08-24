@@ -102,8 +102,6 @@ public class ImageUtil {
                 image.setScaleType(ImageView.ScaleType.CENTER_CROP);
                 LinearLayout.LayoutParams layoutParams =
                         new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, 240);
-                LinearLayout.LayoutParams wraplayoutParams =
-                        new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, 0);
                 if (index > 0) {
                     layoutParams.setMargins(0, 20, 0, 0);
                 }
