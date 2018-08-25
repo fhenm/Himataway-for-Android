@@ -12,6 +12,7 @@ import com.github.fhenm.himataway.ProfileActivity
 import com.github.fhenm.himataway.databinding.RowUserBinding
 import com.github.fhenm.himataway.util.ImageUtil
 import twitter4j.User
+import java.util.function.Predicate
 
 class RecyclerUserView constructor(
         context: Context,
@@ -93,10 +94,17 @@ class RecyclerUserAdapter(
     }
 
     override fun insert(index: Int, item: User) {
-        TODO("not supported") //To change body of created functions use File | Settings | File Templates.
+        users.set(index, item)
+        // TODO("not supported") //To change body of created functions use File | Settings | File Templates.
     }
 
-    // 未対応
-    override fun clear() {}
-    override fun remove(id: Long) { }
+    override fun clear() {
+        users.clear()
+    }
+
+    override fun remove(id: Long) {
+        for (user in users) {
+            if (user.id ==id) users.remove(user)
+        }
+    }
 }

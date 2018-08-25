@@ -13,7 +13,10 @@ import android.view.WindowManager
 import com.github.fhenm.himataway.R
 import com.github.fhenm.himataway.adapter.RecyclerUserAdapter
 import com.github.fhenm.himataway.databinding.FragmentRecyclerRetweetersBinding
+import com.github.fhenm.himataway.extensions.firstVisiblePosition
 import com.github.fhenm.himataway.extensions.getTwitterRepo
+import com.github.fhenm.himataway.extensions.setSelection
+import com.github.fhenm.himataway.extensions.setSelectionFromTop
 import com.github.fhenm.himataway.viewmodel.AddtionalType
 import com.github.fhenm.himataway.viewmodel.RetweetersFragmentViewModel
 
@@ -21,7 +24,7 @@ import com.github.fhenm.himataway.viewmodel.RetweetersFragmentViewModel
 /**
  * リツイートを表示
  *
- * @author aska, amay077
+ * @author fhenm, ms~~~~
  */
 class RetweetersFragment : DialogFragment() {
 
@@ -69,22 +72,51 @@ class RetweetersFragment : DialogFragment() {
                 return@Observer
             }
 
+            // 表示している要素の位置
+            val position = binding.recyclerView.firstVisiblePosition()
+
+            // 縦スクロール位置
+            val view = binding.recyclerView.getChildAt(0)
+
             // 追加でなかったら全消し
             if (data.addType == AddtionalType.Clear) {
                 adapter.clear()
             }
 
-            if (data.addType == AddtionalType.AddToBottom) {
+            var count = 0
+            if (data.addType == AddtionalType.AddToBottom || data.addType == AddtionalType.Clear) {
                 for (dataItem in data.items) {
                     adapter.add(dataItem)
+                    count++
                 }
             } else {
                 for (dataItem in data.items) {
                     adapter.insert(0, dataItem)
+                    count++
                 }
             }
 
             adapter.notifyDataSetChanged()
+            
+            if (data.addType == AddtionalType.Clear) {
+                binding.recyclerView.setSelection(0)
+            } else if (data.addType == AddtionalType.AddToTop) {
+                val y = view?.top ?: 0
+
+                val isKeepOnTop = position == 0 && y == 0 // && count < 3
+
+                if (isKeepOnTop) {
+                    binding.recyclerView.setSelection(0)
+                } else {
+                    // 少しでもスクロールさせている時は画面を動かさない様にスクロー位置を復元する
+                    binding.recyclerView.setSelectionFromTop(position + count, y)
+
+//            // 未読の新規ツイートをチラ見せ
+//            if (position == 0 && y == 0) {
+//                mListView!!.smoothScrollToPositionFromTop(position + count, 120)
+//            }
+                }
+            }
         })
 
         viewModel.loadListItems(false)
